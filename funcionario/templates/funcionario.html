@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{block content %}
+<section class="section has-background-link-light">
+  <div class="container">
+    <form action = "" method="GET">
+      <div class="field is-grouped is flex is algin-itens-center is-flex-wrap-wrap">
+        <label class="label p-2 mt-2">Nome do funcionario</label>
+        <div class= "control is-explaned">
+          <input class="input" type="text" name="buscar" value="{{request.GET.buscar}}"
+                 placeholder="Digite o nome do funcionario">
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-link">
+          </button>
+        </div>
+      </div>
+    </form>
+    {% if object_list%}
+    <div style="text-align: center; "><h1 class="subtitle is-size-4">Funcionario</h1></div>
+    <div class="table">
+      <table class="table is-table is-bodered is-narrow is-hoverable is-fullwidth">
+        <thead>
+        <tr>
+          <th class="has-text-centered">Nome</th>
+          <th class="has-text-centered">Fone</th>
+          <th class="has-text-centered">E-mail</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cliente in object_list %}
+        <tr>
+          <td><a href="#" data-toogle="modal" class="modal-target"
+                 data-bulma-modal="modal{{funcionario.id}}" id="modal{{funcionario.id}}">
+            {{funcionario.nome}}</a></td>
+          <td>{{funcionario.fone}}</td>
+          <td>{{funcionario.email}}</td>
+          <div class="modal" id="modal {{funcionario.id}}">
+            <div class="modal-background"></div>
+            <div class="modal-card-head">
+              <p class="modal-card-title">Funcionario: {{funcionario.nome}}</p>
+
+            </div>
+          </div>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
